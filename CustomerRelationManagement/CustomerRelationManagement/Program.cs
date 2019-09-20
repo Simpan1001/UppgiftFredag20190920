@@ -17,10 +17,10 @@ namespace CustomerRelationManagement
             customers.Add(new Customer() { Name = "Karl Olsson", PhoneNumber = "070-504 76 62", Email = "karl.olsson@hotmail.se", Favorite = false });
             customers.Add(new Customer() { Name = "Alberto Ramirdez", PhoneNumber = "070-839 67 40", Email = "alberto.ramidez@spainmail.sp", Favorite = true });
             customers.Add(new Customer() { Name = "Lucifer Morningstar", PhoneNumber = "666-666 66 66", Email = "lucifer.morningstar@hell.og", Favorite = true });
-            customers.Add(new Customer() { Name = "Alberto Ramirdez", PhoneNumber = "070-839 67 40", Email = "alberto.ramidez@spainmail.sp", Favorite = false });
-            customers.Add(new Customer() { Name = "", PhoneNumber = "", Email = "", Favorite = true });
+            customers.Add(new Customer() { Name = "Groot", PhoneNumber = "080-404 13 37", Email = "iam.groot@grootmail.boss", Favorite = true });
+            customers.Add(new Customer() { Name = "Tony Stark", PhoneNumber = "066-724 01 76", Email = "tony.stark@ironmail.pow", Favorite = false });
 
-            Console.WriteLine("---===Customer Relation Management Service===---\n");
+            Console.WriteLine("===Customer Relation Management Service===\n");
             Console.WriteLine("Hej, är du registrerad?\nJ/N");
             string a = Console.ReadLine();
 
@@ -29,22 +29,27 @@ namespace CustomerRelationManagement
             {
                 Console.WriteLine("Please input your name.");
                 tempName = Console.ReadLine();
-
+                int c = 0;
                 foreach (Customer anka in customers)
                 {
                     if (tempName == anka.Name)
                     {
                         Console.WriteLine("\nPhonenumber: {0}\nEmail: {1}\nFavourite: {2}", anka.PhoneNumber, anka.Email, anka.Favorite);
+                        c++;
                     }
+                }
+                if (c == 0)
+                {
+                    Console.WriteLine("Sorry, that name does not exist in the current context. Maybe a typo?\nTerminating Program . . .");
                 }
             }
 
             else if (a[0] == 'n')
             {
-                Console.WriteLine("====================\nYou have {0} contacts:", customers.Count);
+                Console.WriteLine("====================\nYou have ({0}) contacts:", customers.Count);
                 foreach (Customer anka in customers)
                 {
-                    Console.WriteLine(anka.Name);
+                    Console.WriteLine("[#]{0}[#]", anka.Name);
                 }
                 int b = 0;
                 foreach (Customer jorgen in customers)
@@ -54,19 +59,21 @@ namespace CustomerRelationManagement
                         b++;
                     }
                 }
+                
                 Console.WriteLine("====================\nYou have ({0}) favorites.", b);
                 foreach (Customer peter in customers)
                 {
                     if (peter.Favorite == true)
                     {
-                        Console.WriteLine(peter.Name);
+                        Console.WriteLine("[<3]{0}[<3]", peter.Name);
                     }
                 }
+                Console.WriteLine("Terminating Program . . .");
             }
 
             else
             {
-                Console.WriteLine("Not an answer......\nTerminating Program. . .");
+                Console.WriteLine("Not an answer......\nTerminating Program . . .");
             }
         }
     }
